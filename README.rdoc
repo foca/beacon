@@ -1,0 +1,86 @@
+= Master and Servant
+
+Simple observers for your code.
+
+== How to use it?
+
+In the objects that will fire events, include the <tt>Master</tt> module, and
+then call <tt>notify</tt> with the event name and any arguments you want to
+pass to it (the instance that fires the event is always passed.) For example:
+
+    class Foo
+      include Master
+
+      def some_foobar
+        notify :the_foobars, "foo"
+      end
+    end
+
+Define event listeners by declaring classes/modules that include <tt>Servant</tt>
+and define handlers by calling the <tt>observe</tt> method:
+
+    class Plugin
+      include Servant
+
+      observe :cuack do |obj|
+        puts "cuack"
+      end
+
+      observe :the_foobars do |obj, foobar|
+        puts obj.inspect
+        puts foobar.inspect
+      end
+    end
+
+Then tell the master to notify that servant:
+
+    Master << Plugin
+
+And voila! each time your <tt>Foo</tt> instances call <tt>some_foobar</tt>, then
+both the instance of <tt>Foo</tt> and the string "foo" will get printed to STDOUT.
+
+== Why the name?
+
+    Theres a new game
+    We like to play you see
+    A game with added reality
+    You treat me like a dog
+    Get me down on my knees
+    
+    We call it master and servant
+    We call it master and servant
+    
+    Its a lot like life
+    This play between the sheets
+    With you on top and me underneath
+    Forget all about equality
+    
+    Lets play master and servant
+    Lets play master and servant
+    
+    Its a lot like life
+    And thats whats appealing
+    If you despise that throwaway feeling
+    From disposable fun
+    Then this is the one
+    
+    Dominations the name of the game
+    In bed or in life
+    Theyre both just the same
+    Except in one youre fulfilled
+    At the end of the day
+    
+    Lets play master and servant
+    Lets play master and servant
+    
+    Lets play master and servant
+    Come on, master and servant
+
+    -- Master & Servant, Depeche Mode
+
+The idea for the awesome name came from nachof[http://github.com/nachof]. So
+credit where it's due.
+
+== License
+
+The code is licensed under an MIT license. Check the LICENSE file for details.
