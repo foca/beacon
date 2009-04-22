@@ -4,6 +4,7 @@ Gem::Specification.new do |s|
   s.date    = "2009-04-22"
 
   s.description = "Simple observers for your code"
+  s.summary     = "Observing your codez"
   s.homepage    = "http://github.com/foca/master-n-servant"
 
   s.authors = ["Nicolás Sanguinetti"]
