@@ -3,9 +3,13 @@ module Beacon
   # and any arguments you want passed to the event handlers.
   #
   #     Beacon.fire(:some_event, "an argument", 2, "another")
-  def self.fire(event, *args)
+  def self.fire(event, *args, &block)
     events[event].each do |callback|
-      callback.call(*args)
+      if block_given?
+        callback.call(*args, &block)
+      else
+        callback.call(*args)
+      end
     end
   end
 
@@ -27,6 +31,9 @@ module Beacon
   #
   #     Beacon.watch :some_event, MyHandler.new
   def self.watch(event, handler=nil, &default_handler)
+    if handler && block_given?
+      raise ArgumentError, "You cannot register a handler with both a block and an object"
+    end
     handler = handler || default_handler || raise(ArgumentError, "You must provide a handler")
     events[event] << handler
   end
