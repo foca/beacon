@@ -1,4 +1,4 @@
-require "rake/testtask"
+require 'spec/rake/spectask'
 
 begin
   require "hanna/rdoctask"
@@ -18,11 +18,12 @@ rescue LoadError
 end
 
 desc "Default: run all tests"
-task :default => :test
+task :default => :spec
 
-desc "Run web application tests"
-Rake::TestTask.new(:test) do |t|
-  t.test_files = FileList["test/**/*_test.rb"]
+desc "Run library tests"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_opts = %w(-fs --color)
 end
 
 Rake::RDocTask.new do |rd|
