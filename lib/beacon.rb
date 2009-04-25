@@ -3,13 +3,9 @@ module Beacon
   # and any arguments you want passed to the event handlers.
   #
   #     Beacon.fire(:some_event, "an argument", 2, "another")
-  def self.fire(event, *args, &block)
+  def self.fire(event, *args)
     events[event].each do |callback|
-      if block_given?
-        callback.call(*args, &block)
-      else
-        callback.call(*args)
-      end
+      callback.call(*args)
     end
   end
 
