@@ -11,6 +11,11 @@ begin
 rescue LoadError
 end
 
+begin
+  require "mg"
+  MG.new("beacon.gemspec")
+rescue LoadError
+end
 
 desc "Default: run all tests"
 task :default => :test
@@ -22,7 +27,7 @@ end
 
 Rake::RDocTask.new do |rd|
   rd.main = "README"
-  rd.title = "Documentation for Master & Servant"
+  rd.title = "Beacon Documentation"
   rd.rdoc_files.include("README.rdoc", "LICENSE", "lib/**/*.rb")
   rd.rdoc_dir = "doc"
 end

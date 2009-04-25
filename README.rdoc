@@ -1,85 +1,42 @@
-= Master and Servant
+= Beacon
 
-Simple observers for your code.
+Simple observers and notifiers for your code.
 
-== How to use it?
+The library aims to provide the simplest implementation possible. You get 
+<i>beacons</i>, which are always global and can be "lit up". Whenever you
+light a beacon up, everyone watching will act as instructed.
 
-In the objects that will fire events, include the <tt>Master</tt> module, and
-then call <tt>notify</tt> with the event name and any arguments you want to
-pass to it (the instance that fires the event is always passed.) For example:
+== How to use this?
 
-    class Foo
-      include Master
+Whenever you want to fire an event from your code, call <tt>Beacon.fire</tt>:
 
-      def some_foobar
-        notify :the_foobars, "foo"
-      end
+    def do_something
+      Beacon.fire(:before_doing_something)
+      # do your thing
     end
 
-Define event listeners by declaring classes/modules that include <tt>Servant</tt>
-and define handlers by calling the <tt>observe</tt> method:
+In order to register listeners for that event, call <tt>Beacon.watch</tt>:
 
-    class Plugin
-      include Servant
-
-      observe :cuack do |obj|
-        puts "cuack"
-      end
-
-      observe :the_foobars do |obj, foobar|
-        puts obj.inspect
-        puts foobar.inspect
-      end
+    Beacon.watch :before_doing_something do
+      logger.info "I'm about to do something"
     end
 
-Then tell the master to notify that servant:
+Each time you call <tt>watch</tt> with a given name, you register a different
+handler for that name. Each time you call <tt>fire</tt> <b>all</b> handlers
+for that event are run, in the order they were registered.
 
-    Master << Plugin
+== Passing arguments
 
-And voila! each time your <tt>Foo</tt> instances call <tt>some_foobar</tt>, then
-both the instance of <tt>Foo</tt> and the string "foo" will get printed to STDOUT.
+If you want to pass arguments to the watchers, just pass them along in
+<tt>Beacon.fire</tt>:
 
-== Why the name?
+    Beacon.fire(:an_event, "cuack", 3)
 
-    Theres a new game
-    We like to play you see
-    A game with added reality
-    You treat me like a dog
-    Get me down on my knees
-    
-    We call it master and servant
-    We call it master and servant
-    
-    Its a lot like life
-    This play between the sheets
-    With you on top and me underneath
-    Forget all about equality
-    
-    Lets play master and servant
-    Lets play master and servant
-    
-    Its a lot like life
-    And thats whats appealing
-    If you despise that throwaway feeling
-    From disposable fun
-    Then this is the one
-    
-    Dominations the name of the game
-    In bed or in life
-    Theyre both just the same
-    Except in one youre fulfilled
-    At the end of the day
-    
-    Lets play master and servant
-    Lets play master and servant
-    
-    Lets play master and servant
-    Come on, master and servant
+And you'll get them as arguments on the block that handles the message:
 
-    -- Master & Servant, Depeche Mode
-
-The idea for the awesome name came from nachof[http://github.com/nachof]. So
-credit where it's due.
+    Beacon.watch :an_event do |object, index|
+      # here object == "cuack", index == 3
+    end
 
 == License
 

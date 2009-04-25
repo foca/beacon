@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
-  s.name    = "master-n-servant"
+  s.name    = "beacon"
   s.version = "0.1"
   s.date    = "2009-04-22"
 
-  s.description = "Simple observers for your code"
-  s.summary     = "Observing your codez"
-  s.homepage    = "http://github.com/foca/master-n-servant"
+  s.description = "Simple and straightforward observers for your code"
+  s.summary     = "Simple and straightforward observers for your code"
+  s.homepage    = "http://github.com/foca/beacon"
 
   s.authors = ["Nicolás Sanguinetti"]
   s.email   = "contacto@nicolassanguinetti.info"
@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
     s.add_development_dependency "sr-mg"
     s.add_development_dependency "contest"
     s.add_development_dependency "redgreen"
-    s.add_development_dependency "ruby-debug"
   end
 
   s.files = %w[
@@ -26,7 +25,7 @@ Gem::Specification.new do |s|
 LICENSE
 README.rdoc
 Rakefile
-master_n_servant.gemspec
-lib/master_n_servant.rb
+beacon.gemspec
+lib/beacon.rb
 ]
 end
