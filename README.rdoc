@@ -38,6 +38,20 @@ And you'll get them as arguments on the block that handles the message:
       # here object == "cuack", index == 3
     end
 
+== Advanced handlers
+
+Instead of blocks, <tt>Beacon.watch</tt> can receive any object that responds
+to <tt>call</tt>, so if you need any advanced logic in your handlers, you can
+declare them like this:
+
+    class MyHandler
+      def call(foo, bar=0)
+        puts foo.inspect, bar
+      end
+    end
+
+    Beacon.watch :an_event, MyHandler.new
+
 == License
 
 The code is licensed under an MIT license. Check the LICENSE file for details.

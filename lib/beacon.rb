@@ -15,7 +15,19 @@ module Beacon
   #     Beacon.watch :some_event do |foo, bar, baz|
   #       # do stuff with foo, bar, and baz
   #     end
-  def self.watch(event, &handler)
+  #
+  # Instead of passing a block, you can pass any object that responds to 
+  # <tt>#call</tt>. Like this:
+  #
+  #     class MyHandler
+  #       def call(foo=1, bar=2, baz=3)
+  #         puts foo, bar, baz
+  #       end
+  #     end
+  #
+  #     Beacon.watch :some_event, MyHandler.new
+  def self.watch(event, handler=nil, &default_handler)
+    handler = handler || default_handler || raise(ArgumentError, "You must provide a handler")
     events[event] << handler
   end
 
