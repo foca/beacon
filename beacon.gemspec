@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name    = "beacon"
   s.version = "0.1"
-  s.date    = "2009-04-22"
+  s.date    = "2009-04-25"
 
   s.description = "Simple and straightforward observers for your code"
   s.summary     = "Simple and straightforward observers for your code"
@@ -16,8 +16,7 @@ Gem::Specification.new do |s|
 
   if s.respond_to?(:add_development_dependency)
     s.add_development_dependency "sr-mg"
-    s.add_development_dependency "contest"
-    s.add_development_dependency "redgreen"
+    s.add_development_dependency "rspec"
   end
 
   s.files = %w[
