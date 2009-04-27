@@ -56,6 +56,16 @@ declare them like this:
 
     gem install beacon
 
-== License
+== Contributing
+
+Clone our git repo from <tt>git://github.com/foca/beacon.git</tt>. The preffered
+way to send a patch is to push to a clone of the repo on github[http://github.com]
+but if you want to mail me a patch or point me to a diff I won't complain. Though
+I'll probably take more to apply it :)
+
+== Authors
+
+Code written by foca[http://github.com/foca], with the help and ideas of
+halorgium[http://github.com/halorgium], and tizoc[http://github.com/tizoc].
 
 The code is licensed under an MIT license. Check the LICENSE file for details.
