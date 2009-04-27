@@ -52,6 +52,10 @@ declare them like this:
 
     Beacon.watch :an_event, MyHandler.new
 
+== Installing with rubygems
+
+    gem install beacon
+
 == License
 
 The code is licensed under an MIT license. Check the LICENSE file for details.

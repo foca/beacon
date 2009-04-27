@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
 
   s.require_paths     = ["lib"]
   s.has_rdoc          = true
+  s.rubyforge_project = "beacon"
   s.rubygems_version  = "1.3.1"
 
   if s.respond_to?(:add_development_dependency)
