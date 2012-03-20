@@ -15,10 +15,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "beacon"
   s.rubygems_version  = "1.3.1"
 
-  if s.respond_to?(:add_development_dependency)
-    s.add_development_dependency "sr-mg"
-    s.add_development_dependency "rspec"
-  end
+  s.add_development_dependency "rspec", "~> 2.0"
+  s.add_development_dependency "hanna", "~> 0.1"
 
   s.files = %w[
 .gitignore

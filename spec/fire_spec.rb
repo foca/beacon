@@ -1,6 +1,6 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require "spec_helper"
 
-describe "Beacon" do
+describe Beacon do
   describe "with a pass-through handler watching :event" do
     before(:each) do
       @args = nil

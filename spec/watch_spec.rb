@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require "spec_helper"
 
 class Handler
   def initialize
@@ -11,7 +11,7 @@ class Handler
   end
 end
 
-describe "Beacon" do
+describe Beacon do
   it "allows watching an event with a block" do
     value = nil
     Beacon.watch(:event) do
