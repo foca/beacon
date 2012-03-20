@@ -6,6 +6,8 @@ The library aims to provide the simplest implementation possible. You get
 <i>beacons</i>, which are always global and can be "lit up". Whenever you
 light a beacon up, everyone watching will act as instructed.
 
+{<img src="https://secure.travis-ci.org/foca/beacon.png?branch=master" alt="Build Status" />}[http://travis-ci.org/foca/beacon]
+
 == How to use this?
 
 Whenever you want to fire an event from your code, call <tt>Beacon.fire</tt>:
