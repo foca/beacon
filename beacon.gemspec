@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary     = "Simple and straightforward observers for your code"
   s.homepage    = "http://github.com/foca/beacon"
 
-  s.authors = ["Nicolás Sanguinetti"]
+  s.authors = ["Nicolas Sanguinetti"]
   s.email   = "contacto@nicolassanguinetti.info"
 
   s.require_paths     = ["lib"]
