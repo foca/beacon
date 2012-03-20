@@ -1,0 +1,11 @@
+0.9 - March 20th, 2012
+----------------------
+
+* Support for isolated events.
+* Beacon is now a mixin.
+* Added aliases `on` and `trigger` for `watch` and `fire`.
+
+0.1 - April 25th, 2009
+----------------------
+
+Initial release!
