@@ -10,6 +10,7 @@ module Beacon
       callback.call(*args)
     end
   end
+  alias_method :trigger, :fire
 
   # Register a callback for a given event. Each time you call <tt>fire</tt> then
   # all the callbacks registered for that name will be called in order.
@@ -35,6 +36,7 @@ module Beacon
     handler = handler || default_handler || raise(ArgumentError, "You must provide a handler")
     events[event] << handler
   end
+  alias_method :on, :watch
 
   def events
     @events ||= Hash.new {|h,k| h[k] = [] }

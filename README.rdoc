@@ -25,6 +25,10 @@ Each time you call <tt>watch</tt> with a given name, you register a different
 handler for that name. Each time you call <tt>fire</tt> <b>all</b> handlers
 for that event are run, in the order they were registered.
 
+You can use <tt>on</tt> as an alias of <tt>watch</tt>, and <tt>trigger</tt> as
+an alias of <tt>fire</tt>, since those seem to be popular choices among event
+observing libraries.
+
 == Passing arguments
 
 If you want to pass arguments to the watchers, just pass them along in
