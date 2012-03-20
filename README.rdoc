@@ -52,6 +52,19 @@ declare them like this:
 
     Beacon.watch :an_event, MyHandler.new
 
+== Isolated events
+
+You can include Beacon into your objects to have isolated events on a per-object
+basis if you need that:
+
+    class MyObservable
+      include Beacon
+    end
+
+    obj = MyObservable.new
+    obj.watch(:an_event) { |object, *args| puts *args }
+    obj.trigger(:an_event, "foo")
+
 == Installing with rubygems
 
     gem install beacon

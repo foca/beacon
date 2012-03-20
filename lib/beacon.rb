@@ -1,9 +1,11 @@
 module Beacon
+  extend self
+
   # Fire an event to be processed by all the watchers. You pass the event name
   # and any arguments you want passed to the event handlers.
   #
   #     Beacon.fire(:some_event, "an argument", 2, "another")
-  def self.fire(event, *args)
+  def fire(event, *args)
     events[event].each do |callback|
       callback.call(*args)
     end
@@ -26,7 +28,7 @@ module Beacon
   #     end
   #
   #     Beacon.watch :some_event, MyHandler.new
-  def self.watch(event, handler=nil, &default_handler)
+  def watch(event, handler=nil, &default_handler)
     if handler && block_given?
       raise ArgumentError, "You cannot register a handler with both a block and an object"
     end
@@ -34,8 +36,8 @@ module Beacon
     events[event] << handler
   end
 
-  def self.events
+  def events
     @events ||= Hash.new {|h,k| h[k] = [] }
   end
-  private_class_method :events
+  private :events
 end
